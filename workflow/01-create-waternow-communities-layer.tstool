@@ -1,7 +1,8 @@
-# Read environment organizations from Excel worksheet:
-# - TODO smalers 2020-06-13 maybe filter by InBasin to 2 layers and show different icon
-#   or otherwise filter and change icons
-ReadTableFromExcel(TableID="EnvironmentOrgsData",InputFile="../data/co-environment-orgs.xlsx",Worksheet="Data",ExcelColumnNames=FirstRowInRange)
+# Workflow to convert WaterNow communities file to a GeoJSON file:
+# - had to manually edit the original CSV because it has an embedded newline
+#
+# Read WaterNow communities from CSV file:
+ReadTableFromDelimitedFile(TableID="WaterNow_Communities",InputFile="..\data\WaterNow-CaseStudy-Communities.csv",HeaderLines="1")
 #
 # Export table to GeoJSON format.
-WriteTableToGeoJSON(TableID="EnvironmentOrgsData",OutputFile="../data/co-environment-orgs.geojson",LongitudeColumn="Longitude",LatitudeColumn="Latitude")
+WriteTableToGeoJSON(TableID="WaterNow_Communities",OutputFile="../data/co-waternow-communities.geojson",LongitudeColumn="x",LatitudeColumn="y")
